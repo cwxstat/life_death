@@ -14,5 +14,5 @@ func TestActu_CSV(t *testing.T) {
 
 func TestActu_Range(t *testing.T) {
 	a := NewActu()
-	a.Range(5)
+	a.Range(15)
 }

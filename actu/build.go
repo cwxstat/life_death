@@ -10,6 +10,7 @@ import (
 const (
 	Row = 120
 	Col = 7
+	sex = 2
 )
 
 type build struct {
@@ -39,10 +40,21 @@ func getNum(skip *int, s string) float64 {
 	return num
 }
 
-func (b *build) calc() *build {
+func (b *build) raw() [Row][Col]float64 {
+	return b.numbers
+}
 
-	total := [2][]float64{}
-	sum := [2]float64{}
+func (b *build) n(i, j int) float64 {
+	if i < 0 || i >= Row || j < 0 || j >= Col {
+		return 0.0
+	}
+	return b.numbers[i][j]
+}
+
+func (b *build) calc() {
+
+	total := [sex][]float64{}
+	sum := [sex]float64{}
 	b.numbers = [120][7]float64{}
 	for i, v := range b.data {
 		if i <= 0 {
@@ -63,7 +75,7 @@ func (b *build) calc() *build {
 
 	b.mTotal = total[0]
 	b.wTotal = total[1]
-	return b
+
 }
 
 func myread() ([]byte, error) {
