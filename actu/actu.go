@@ -1,10 +1,5 @@
 package actu
 
-import (
-	
-)
-
-
 type Actu struct {
 	b *build
 }
@@ -16,7 +11,6 @@ func NewActu() *Actu {
 	return a
 }
 
-
-func (a *Actu)CSV() [][]string {
+func (a *Actu) Data() [][]string {
 	return a.b.data[1:]
-} 
+}
