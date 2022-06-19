@@ -70,7 +70,7 @@ func myread() ([]byte, error) {
 	}
 	n, err := f.Read(b)
 
-	return b[0:n], nil
+	return b[0:n], err
 }
 
 func mysplit(b []byte) [][]string {
