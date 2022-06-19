@@ -13,6 +13,7 @@ type build struct {
 	wTotal []float64
 	skip int
 	data [][]string
+	numbers [120][7]float64
 
 }
 
@@ -40,6 +41,7 @@ func (b *build)calc() *build {
 
 	total := [2][]float64{}
 	sum := [2]float64{}
+	b.numbers = [120][7]float64{}
 	for i,v := range b.data {
 		if i <= 0 {
 			continue
@@ -50,6 +52,11 @@ func (b *build)calc() *build {
 
 		total[0] = append(total[0],sum[0])
 		total[1] = append(total[1],sum[1])
+
+		
+		for j:=0; j < len(v); j+=1 {
+			b.numbers[i-1][j] = getNum(&b.skip,v[j])
+		}
 
 	}
 
