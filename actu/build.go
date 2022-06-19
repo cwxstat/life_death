@@ -1,6 +1,5 @@
 package actu
 
-
 import (
 	"github.com/cwxstat/life_death/data"
 	"os"
