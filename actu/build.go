@@ -1,20 +1,18 @@
 package actu
 
 import (
-	"os"
-	"strings"
-	"strconv"
 	"github.com/cwxstat/life_death/data"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type build struct {
-
-	mTotal []float64
-	wTotal []float64
-	skip int
-	data [][]string
+	mTotal  []float64
+	wTotal  []float64
+	skip    int
+	data    [][]string
 	numbers [120][7]float64
-
 }
 
 func newBuild() *build {
@@ -28,34 +26,32 @@ func newBuild() *build {
 	return b
 }
 
-func getNum(skip *int,s string) float64 {
-	num,err := strconv.ParseFloat(s, 64)
+func getNum(skip *int, s string) float64 {
+	num, err := strconv.ParseFloat(s, 64)
 	if err != nil {
 		*skip += 1
 	}
 	return num
 }
 
-
-func (b *build)calc() *build {
+func (b *build) calc() *build {
 
 	total := [2][]float64{}
 	sum := [2]float64{}
 	b.numbers = [120][7]float64{}
-	for i,v := range b.data {
+	for i, v := range b.data {
 		if i <= 0 {
 			continue
 		}
-		
-		sum[0] += getNum(&b.skip,v[1])
-		sum[1] += getNum(&b.skip,v[4])
 
-		total[0] = append(total[0],sum[0])
-		total[1] = append(total[1],sum[1])
+		sum[0] += getNum(&b.skip, v[1])
+		sum[1] += getNum(&b.skip, v[4])
 
-		
-		for j:=0; j < len(v); j+=1 {
-			b.numbers[i-1][j] = getNum(&b.skip,v[j])
+		total[0] = append(total[0], sum[0])
+		total[1] = append(total[1], sum[1])
+
+		for j := 0; j < len(v); j += 1 {
+			b.numbers[i-1][j] = getNum(&b.skip, v[j])
 		}
 
 	}
@@ -64,7 +60,6 @@ func (b *build)calc() *build {
 	b.wTotal = total[1]
 	return b
 }
-
 
 func myread() ([]byte, error) {
 	b := make([]byte, 10000)

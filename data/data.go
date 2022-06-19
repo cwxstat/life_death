@@ -13,7 +13,6 @@ func init() {
 	basepath = filepath.Dir(currentFile)
 }
 
-
 func DataFile() string {
 	file := "lifeexp.txt"
 	if filepath.IsAbs(file) {
