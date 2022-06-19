@@ -11,3 +11,8 @@ func TestActu_CSV(t *testing.T) {
 		t.FailNow()
 	}
 }
+
+func TestActu_Range(t *testing.T) {
+	a := NewActu()
+	a.Range(5)
+}
