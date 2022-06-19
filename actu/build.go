@@ -1,9 +1,10 @@
-package main
+package actu
 
 import (
 	"os"
 	"strings"
 	"strconv"
+	"github.com/cwxstat/life_death/data"
 )
 
 type build struct {
@@ -12,6 +13,7 @@ type build struct {
 	wTotal []float64
 	skip int
 	data [][]string
+
 }
 
 func newBuild() *build {
@@ -34,7 +36,7 @@ func getNum(skip *int,s string) float64 {
 }
 
 
-func (b *build)Calc() *build {
+func (b *build)calc() *build {
 
 	total := [2][]float64{}
 	sum := [2]float64{}
@@ -60,7 +62,7 @@ func (b *build)Calc() *build {
 func myread() ([]byte, error) {
 	b := make([]byte, 10000)
 
-	f, err := os.Open("data")
+	f, err := os.Open(data.DataFile())
 	if err != nil {
 		return b, err
 	}

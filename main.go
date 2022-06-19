@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/cwxstat/life_death/actu"
 )
 
 func main() {
-	b := newBuild()
-	b.Calc()
-	fmt.Println("end")
+	a := actu.NewActu()
+	fmt.Println(a.CSV())
 
 }
