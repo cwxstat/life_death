@@ -1,5 +1,6 @@
 package actu
 
+
 import (
 	"github.com/cwxstat/life_death/data"
 	"os"
@@ -7,12 +8,17 @@ import (
 	"strings"
 )
 
+const (
+	Row = 120
+	Col = 7
+)
+
 type build struct {
 	mTotal  []float64
 	wTotal  []float64
 	skip    int
 	data    [][]string
-	numbers [120][7]float64
+	numbers [Row][Col]float64
 }
 
 func newBuild() *build {

@@ -11,6 +11,6 @@ func NewActu() *Actu {
 	return a
 }
 
-func (a *Actu) Data() [120][7]float64 {
+func (a *Actu) Data() [Row][Col]float64 {
 	return a.b.numbers
 }
