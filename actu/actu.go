@@ -26,7 +26,7 @@ func (a *Actu) Data() [loader.Row][loader.Col]float64 {
 	return a.b.Raw()
 }
 
-func (a *Actu) Range(years int) [2][]float64 {
+func (a *Actu) Bucket(years int) [2][]float64 {
 	out := [2][]float64{}
 	if years <= 0 {
 		return out

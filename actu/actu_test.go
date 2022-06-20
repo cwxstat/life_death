@@ -12,7 +12,7 @@ func TestActu_CSV(t *testing.T) {
 	}
 }
 
-func TestActu_Range(t *testing.T) {
+func TestActu_Bucket(t *testing.T) {
 	a := NewActu()
-	a.Range(15)
+	a.Bucket(15)
 }
