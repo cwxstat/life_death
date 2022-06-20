@@ -1,13 +1,13 @@
 package actu
 
-type BuildInter interface {
+type Loader interface {
 	calc()
 	n(int, int) float64
 	raw() [Row][Col]float64
 }
 
 type Actu struct {
-	b BuildInter
+	b Loader
 }
 
 func NewActu() *Actu {
