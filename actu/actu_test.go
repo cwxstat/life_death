@@ -1,6 +1,7 @@
 package actu
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -15,4 +16,10 @@ func TestActu_CSV(t *testing.T) {
 func TestActu_Bucket(t *testing.T) {
 	a := NewActu()
 	a.Bucket(15)
+}
+
+func TestActu_Range(t *testing.T) {
+	a := NewActu()
+	result := a.Range(-3, 5)
+	fmt.Println(result)
 }
