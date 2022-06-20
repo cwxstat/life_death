@@ -25,7 +25,7 @@ type load struct {
 func NewLoad() *load {
 	b := &load{}
 
-	raw, err := myread()
+	raw, err := myread("lifeexp.txt")
 	if err != nil {
 		return b
 	}
@@ -79,10 +79,22 @@ func (l *load) Calc() {
 
 }
 
-func myread() ([]byte, error) {
-	b := make([]byte, 10000)
+func size(file string) (int64, error) {
+	info, err := os.Stat(data.DataFile(file))
+	if err != nil {
+		return 0, err
+	}
+	return info.Size(), nil
+}
 
-	f, err := os.Open(data.DataFile())
+func myread(file string) ([]byte, error) {
+	size, err := size(file)
+	if err != nil {
+		return nil, nil
+	}
+	b := make([]byte, size)
+
+	f, err := os.Open(data.DataFile(file))
 	if err != nil {
 		return b, err
 	}

@@ -34,7 +34,7 @@ func (a *Actu) Range(p0, p1 int) [2]float64 {
 	if p1 > loader.Row {
 		p1 = loader.Row
 	}
-	if p1 <= p0 {
+	if p1 < p0 {
 		return out
 	}
 
