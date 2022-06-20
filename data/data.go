@@ -13,11 +13,9 @@ func init() {
 	basepath = filepath.Dir(currentFile)
 }
 
-func DataFile() string {
-	file := "lifeexp.txt"
+func DataFile(file string) string {
 	if filepath.IsAbs(file) {
 		return file
 	}
-
 	return filepath.Join(basepath, file)
 }
