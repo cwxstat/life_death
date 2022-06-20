@@ -1,10 +1,11 @@
 package loader
 
 import (
-	"github.com/cwxstat/life_death/data"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/cwxstat/life_death/data"
 )
 
 const (
@@ -13,7 +14,7 @@ const (
 	sex = 2
 )
 
-type build struct {
+type load struct {
 	mTotal  []float64
 	wTotal  []float64
 	skip    int
@@ -21,8 +22,8 @@ type build struct {
 	numbers [Row][Col]float64
 }
 
-func NewBuild() *build {
-	b := &build{}
+func NewLoad() *load {
+	b := &load{}
 
 	raw, err := myread()
 	if err != nil {
@@ -40,41 +41,41 @@ func getNum(skip *int, s string) float64 {
 	return num
 }
 
-func (b *build) Raw() [Row][Col]float64 {
-	return b.numbers
+func (l *load) Raw() [Row][Col]float64 {
+	return l.numbers
 }
 
-func (b *build) N(i, j int) float64 {
+func (l *load) N(i, j int) float64 {
 	if i < 0 || i >= Row || j < 0 || j >= Col {
 		return 0.0
 	}
-	return b.numbers[i][j]
+	return l.numbers[i][j]
 }
 
-func (b *build) Calc() {
+func (l *load) Calc() {
 
 	total := [sex][]float64{}
 	sum := [sex]float64{}
-	b.numbers = [120][7]float64{}
-	for i, v := range b.data {
+	l.numbers = [120][7]float64{}
+	for i, v := range l.data {
 		if i <= 0 {
 			continue
 		}
 
-		sum[0] += getNum(&b.skip, v[1])
-		sum[1] += getNum(&b.skip, v[4])
+		sum[0] += getNum(&l.skip, v[1])
+		sum[1] += getNum(&l.skip, v[4])
 
 		total[0] = append(total[0], sum[0])
 		total[1] = append(total[1], sum[1])
 
 		for j := 0; j < len(v); j += 1 {
-			b.numbers[i-1][j] = getNum(&b.skip, v[j])
+			l.numbers[i-1][j] = getNum(&l.skip, v[j])
 		}
 
 	}
 
-	b.mTotal = total[0]
-	b.wTotal = total[1]
+	l.mTotal = total[0]
+	l.wTotal = total[1]
 
 }
 

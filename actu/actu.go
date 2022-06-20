@@ -1,7 +1,6 @@
 package actu
 
 import (
-	
 	"github.com/cwxstat/life_death/data/loader"
 )
 
@@ -17,7 +16,7 @@ type Actu struct {
 
 func NewActu() *Actu {
 
-	b := loader.NewBuild()
+	b := loader.NewLoad()
 	b.Calc()
 	a := &Actu{b: b}
 	return a
