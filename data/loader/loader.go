@@ -79,25 +79,24 @@ func (l *load) Calc() {
 
 }
 
-func size(file string) (int64,error) {
-	info,err := os.Stat(data.DataFile(file))
+func size(file string) (int64, error) {
+	info, err := os.Stat(data.DataFile(file))
 	if err != nil {
 		return 0, err
 	}
-	return info.Size(),nil
+	return info.Size(), nil
 }
-
 
 func myread() ([]byte, error) {
 
-	size, err := size("lifeexp.txt")
+	file := "lifeexp.txt"
+	size, err := size(file)
 	if err != nil {
-		return nil,nil
+		return nil, nil
 	}
 	b := make([]byte, size)
 
-
-	f, err := os.Open(data.DataFile("lifeexp.txt"))
+	f, err := os.Open(data.DataFile(file))
 	if err != nil {
 		return b, err
 	}
