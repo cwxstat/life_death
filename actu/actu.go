@@ -1,7 +1,8 @@
 package actu
 
 import (
-	"github.com/cwxstat/life_death/actu/loader"
+	
+	"github.com/cwxstat/life_death/data/loader"
 )
 
 type Loader interface {
